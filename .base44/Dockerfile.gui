@@ -1,0 +1,6 @@
+FROM python:3.12-slim
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      python3-tk tk xvfb x11vnc novnc websockify fluxbox curl procps \
+    && rm -rf /var/lib/apt/lists/*
+# python:3.12-slim has its own Python; it needs tkinter via Debian's tk libs
+RUN pip install --no-cache-dir requests easygui
